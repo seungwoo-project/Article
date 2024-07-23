@@ -14,11 +14,19 @@ public class BlogService {
 
     private final BlogRepository blogRepository;
 
+    // 저장
     public Article save(AddArticleRequest request) {
         return blogRepository.save(request.toEntity());
     }
 
+    // 목록 전체 조회
     public List<Article> findAll() {
         return blogRepository.findAll();
+    }
+
+    // 단일 조회
+    public Article findById(Long id) {
+        return blogRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("not found : " + id));
     }
 }
