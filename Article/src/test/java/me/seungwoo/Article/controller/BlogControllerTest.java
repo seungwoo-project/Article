@@ -3,6 +3,7 @@ package me.seungwoo.Article.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import me.seungwoo.Article.domain.Article;
 import me.seungwoo.Article.dto.AddArticleRequest;
+import me.seungwoo.Article.dto.UpdateArticleRequest;
 import me.seungwoo.Article.repository.BlogRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,6 +20,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -112,7 +114,7 @@ class BlogControllerTest {
                 .andExpect(jsonPath("$.title").value(title));
     }
 
-    @DisplayName("deleteArticle: 글 삭제에 성공한다.")
+    @DisplayName("deleteArticle: 블로그 글 삭제에 성공한다.")
     @Test
     public void deleteArticle() throws Exception {
         // given
@@ -128,5 +130,36 @@ class BlogControllerTest {
         // then
         List<Article> articles = blogRepository.findAll();
         assertThat(articles).isEmpty();
+    }
+
+    @DisplayName("updateArticle: 블로그 글 수정에 성공한다.")
+    @Test
+    public void update() throws Exception {
+        // given
+        final String url = "/api/articles/{id}";
+        final String title = "title";
+        final String content = "content";
+        Article article = blogRepository.save(Article.builder()
+                .title(title)
+                .content(content)
+                .build());
+
+        final String newTitle = "new title";
+        final String newContent = "new content";
+
+        UpdateArticleRequest request = new UpdateArticleRequest(newTitle, newContent);
+        // 객체 json으로 직렬화
+        String requestBody = objectMapper.writeValueAsString(request);
+
+        // when
+        ResultActions resultActions = mockMvc.perform(put(url, article.getId()).contentType(MediaType.APPLICATION_JSON_VALUE)
+                .content(requestBody));
+
+        // then
+        resultActions.andExpect(status().isOk());
+
+        Article findArticle = blogRepository.findById(article.getId()).get();
+        assertThat(findArticle.getTitle()).isEqualTo(newTitle);
+        assertThat(findArticle.getContent()).isEqualTo(newContent);
     }
 }

@@ -49,6 +49,7 @@ public class BlogController {
         ArticleResponse articleResponse = new ArticleResponse(updateArticle);
         return ResponseEntity.status(HttpStatus.OK).body(articleResponse);
     }
+
     // 글 삭제
     @DeleteMapping("/api/articles/{id}")
     public ResponseEntity<Void> deleteArticle(@PathVariable("id") Long id) {
