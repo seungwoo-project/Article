@@ -69,8 +69,8 @@ src/
 테스트 코드는 `BlogControllerTest.java` 파일에서 확인할 수 있습니다.
 
 ## 향후 계획
-- Swagger 사용
-- Thymeleaf템플릿 뷰 구현
+- Swagger 사용
+- Thymeleaf 템플릿 뷰 구현
 - 댓글 기능 구현
 - 스프링 시큐리티 설정
 - JWT 서비스 구현
