@@ -44,4 +44,9 @@ public class BlogController {
     // 글 수정
 
     // 글 삭제
+    @DeleteMapping("/api/articles/{id}")
+    public ResponseEntity<Void> deleteArticle(@PathVariable("id") Long id) {
+        blogService.deleteById(id);
+        return ResponseEntity.ok().build();
+    }
 }
