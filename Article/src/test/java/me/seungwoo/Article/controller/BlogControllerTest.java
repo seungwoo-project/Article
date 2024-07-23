@@ -70,7 +70,7 @@ class BlogControllerTest {
 
     }
 
-    @DisplayName("findAllArtices: 블로그 글 목록 조회에 성공한다.")
+    @DisplayName("findAllArticles: 블로그 글 목록 조회에 성공한다.")
     @Test
     public void findAllArticles() throws Exception {
         // given

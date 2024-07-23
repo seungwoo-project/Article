@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import me.seungwoo.Article.domain.Article;
 import me.seungwoo.Article.dto.AddArticleRequest;
 import me.seungwoo.Article.dto.ArticleResponse;
+import me.seungwoo.Article.dto.UpdateArticleRequest;
 import me.seungwoo.Article.service.BlogService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -42,7 +43,12 @@ public class BlogController {
     }
 
     // 글 수정
-
+    @PutMapping("/api/articles/{id}")
+    public ResponseEntity<ArticleResponse> updateArticle(@PathVariable("id") Long id, @RequestBody UpdateArticleRequest request) {
+        Article updateArticle = blogService.update(id, request);
+        ArticleResponse articleResponse = new ArticleResponse(updateArticle);
+        return ResponseEntity.status(HttpStatus.OK).body(articleResponse);
+    }
     // 글 삭제
     @DeleteMapping("/api/articles/{id}")
     public ResponseEntity<Void> deleteArticle(@PathVariable("id") Long id) {
