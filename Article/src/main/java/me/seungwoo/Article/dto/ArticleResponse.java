@@ -5,7 +5,7 @@ import me.seungwoo.Article.domain.Article;
 
 @Getter
 public class ArticleResponse {
-    
+
     private final String title;
     private final String content;
 
