@@ -5,8 +5,7 @@ import me.seungwoo.Article.domain.Article;
 
 @Getter
 public class ArticleResponse {
-
-    private int count;
+    
     private final String title;
     private final String content;
 
