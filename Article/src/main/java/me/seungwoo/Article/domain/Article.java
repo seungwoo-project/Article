@@ -2,6 +2,10 @@ package me.seungwoo.Article.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -12,9 +16,20 @@ public class Article {
     @Column(name = "id", updatable = false)
     private Long id;
 
+    // 생성 시간
+    @CreatedDate
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    // 수정 한 시간
+    @LastModifiedDate
+    @Column(name = "updated_at")
+    private LocalDateTime updateAt;
+
     // 제목
     @Column(name = "title", nullable = false)
     private String title;
+
     // 내용
     @Column(name = "content", nullable = false)
     private String content;
