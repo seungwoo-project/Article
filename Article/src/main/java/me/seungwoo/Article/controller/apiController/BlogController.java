@@ -1,4 +1,4 @@
-package me.seungwoo.Article.controller;
+package me.seungwoo.Article.controller.apiController;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
