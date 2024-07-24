@@ -1,11 +1,9 @@
 package me.seungwoo.Article.dto;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 @Data
-public class AddUserRepuest {
+public class AddUserRequest {
     private String email;
     private String password;
 }
