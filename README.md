@@ -15,6 +15,7 @@
 
 ## 주요 기능
 - 사용자 등록 및 인증
+- JWT(JSON Web Token)를 이용한 인증 및 권한 관리
 - 블로그 글 CRUD (생성, 조회, 수정, 삭제)
 - RESTful API 엔드포인트
 - Thymeleaf 기반의 웹 인터페이스
