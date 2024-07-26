@@ -33,7 +33,7 @@
 
 
 ## API 명세서
-```
+
 | 기능 | Method | URL | Request Body | Response |
 |------|--------|-----|--------------|----------|
 | 글 생성 | POST | /api/articles | { "title": "제목", "content": "내용" } | 201 Created, Article 객체 |
@@ -44,7 +44,7 @@
 | 회원가입 | POST | /user | { "email": "user@example.com", "password": "pwd123" } | 302 Found, /login으로 리다이렉트 |
 | 로그아웃 | GET | /logout | - | 302 Found, /login으로 리다이렉트 |
 | 새 액세스 토큰 생성 | POST | /api/token | { "refreshToken": "token" } | 201 Created, { "accessToken": "newToken" } |
-```
+
 
 
 ## 웹 인터페이스
