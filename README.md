@@ -43,7 +43,6 @@
 | 글 삭제 | DELETE | /api/articles/{id} | - | 200 OK |
 | 회원가입 | POST | /user | { "email": "user@example.com", "password": "pwd123" } | 302 Found, /login으로 리다이렉트 |
 | 로그아웃 | GET | /logout | - | 302 Found, /login으로 리다이렉트 |
-| 새 액세스 토큰 생성 | POST | /api/token | { "refreshToken": "token" } | 201 Created, { "accessToken": "newToken" } |
 
 
 
